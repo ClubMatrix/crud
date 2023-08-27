@@ -1,4 +1,4 @@
-package com.clubmatrix.clubmatrix;
+package com.clubmatrix.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
