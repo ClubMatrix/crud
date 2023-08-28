@@ -1,7 +1,12 @@
 package com.clubmatrix.crud.models;
 
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -13,6 +18,10 @@ public class Role {
     private String name;
     private String slug;
     private String description;
+
+    @ManyToMany
+    @JoinTable(name = "role_permissions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    private Set<Permission> permissions = new HashSet<>();
 
     public Role(String name, String slug, String description) {
         this.name = name;
@@ -46,5 +55,13 @@ public class Role {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void addPermission(Permission permission) {
+        this.permissions.add(permission);
     }
 }
