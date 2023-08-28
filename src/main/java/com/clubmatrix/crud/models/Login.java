@@ -12,7 +12,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class User {
+public class Login {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -26,14 +26,14 @@ public class User {
   private Address address;
 
   @ManyToMany
-  @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(name = "login_role", joinColumns = @JoinColumn(name = "login_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
   @ManyToMany
-  @JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
+  @JoinTable(name = "login_permission", joinColumns = @JoinColumn(name = "login_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
   private Set<Permission> permissions = new HashSet<>();
 
-  public User(String name, String email, String passwordHash, String phone, Address address) {
+  public Login(String name, String email, String passwordHash, String phone, Address address) {
     this.name = name;
     this.email = email;
     this.passwordHash = passwordHash;

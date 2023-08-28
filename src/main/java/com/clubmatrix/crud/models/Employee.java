@@ -14,14 +14,14 @@ public class Employee {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "login_id")
+    private Login login;
 
     private String position;
     private Double salary;
 
-    public Employee(User user, String position, Double salary) {
-        this.user = user;
+    public Employee(Login login, String position, Double salary) {
+        this.login = login;
         this.position = position;
         this.salary = salary;
     }
@@ -30,12 +30,12 @@ public class Employee {
         return id;
     }
 
-    public User getUser() {
-        return user;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     public String getPosition() {

@@ -4,17 +4,17 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.clubmatrix.crud.models.Permission;
 import com.clubmatrix.crud.models.Role;
-import com.clubmatrix.crud.models.User;
+import com.clubmatrix.crud.models.Login;
 
 public class AuthUtil {
     private final String SECRET_KEY = System.getenv("CLUB_MATRIX_SECRET_KEY");
     private final Algorithm ALGORITHM = Algorithm.HMAC512(SECRET_KEY);
 
-    public String generateToken(User user) {
+    public String generateToken(Login login) {
         String jwt = JWT.create()
-            .withSubject(user.getEmail())
-            .withExpiresAt(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
-            .sign(ALGORITHM);
+                .withSubject(login.getEmail())
+                .withExpiresAt(new java.util.Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .sign(ALGORITHM);
 
         return jwt;
     }
@@ -28,8 +28,8 @@ public class AuthUtil {
         }
     }
 
-    public boolean hasPermission(User user, String requiredPermission) {
-        for (Role role : user.getRoles()) {
+    public boolean hasPermission(Login login, String requiredPermission) {
+        for (Role role : login.getRoles()) {
             for (Permission permission : role.getPermissions()) {
                 if (permission.getName().equals(requiredPermission)) {
                     return true;
@@ -37,7 +37,7 @@ public class AuthUtil {
             }
         }
 
-        for (Permission permission : user.getPermissions()) {
+        for (Permission permission : login.getPermissions()) {
             if (permission.getName().equals(requiredPermission)) {
                 return true;
             }

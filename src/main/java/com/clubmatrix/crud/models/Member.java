@@ -16,8 +16,8 @@ public class Member {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "login_id")
+    private Login login;
 
     @Enumerated(EnumType.STRING)
     private PaymentDetails paymentDetails;
@@ -33,8 +33,8 @@ public class Member {
         ACTIVE, INACTIVE, SUSPENDED
     }
 
-    public Member(User user, PaymentDetails paymentDetails, Status status) {
-        this.user = user;
+    public Member(Login login, PaymentDetails paymentDetails, Status status) {
+        this.login = login;
         this.paymentDetails = paymentDetails;
         this.status = status;
     }
@@ -43,12 +43,12 @@ public class Member {
         return id;
     }
 
-    public User getUser() {
-        return user;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     public PaymentDetails getPaymentDetails() {
