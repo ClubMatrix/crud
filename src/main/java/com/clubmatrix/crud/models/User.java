@@ -1,11 +1,15 @@
 package com.clubmatrix.crud.models;
 
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -20,6 +24,14 @@ public class User {
   @OneToOne
   @JoinColumn(name = "address_id")
   private Address address;
+
+  @ManyToMany
+  @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+  private Set<Role> roles = new HashSet<>();
+
+  @ManyToMany
+  @JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
+  private Set<Permission> permissions = new HashSet<>();
 
   public User(String name, String email, String passwordHash, String phone, Address address) {
     this.name = name;
@@ -71,5 +83,29 @@ public class User {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void addRole(Role role) {
+    this.roles.add(role);
+  }
+
+  public void removeRole(Role role) {
+    this.roles.remove(role);
+  }
+
+  public Set<Permission> getPermissions() {
+    return permissions;
+  }
+
+  public void addPermission(Permission permission) {
+    this.permissions.add(permission);
+  }
+
+  public void removePermission(Permission permission) {
+    this.permissions.remove(permission);
   }
 }
