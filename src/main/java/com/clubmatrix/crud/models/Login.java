@@ -34,11 +34,6 @@ public class Login {
   private Set<Permission> permissions = new HashSet<>();
 
   public Login() {
-    this.name = "";
-    this.email = "";
-    this.password = "";
-    this.phone = "";
-    this.address = null;
   }
 
   public Login(String name, String email, String password, String phone, Address address) {

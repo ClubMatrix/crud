@@ -20,6 +20,9 @@ public class Dependent {
     private String name;
     private String relationship;
 
+    public Dependent() {
+    }
+
     public Dependent(Member member, String name, String relationship) {
         this.member = member;
         this.name = name;

@@ -24,7 +24,11 @@ public class EmploymentHistory {
     private Date endDate;
     private String description;
 
-    public EmploymentHistory(Employee employee, String companyName, String position, Date startDate, Date endDate, String description) {
+    public EmploymentHistory() {
+    }
+
+    public EmploymentHistory(Employee employee, String companyName, String position, Date startDate, Date endDate,
+            String description) {
         this.employee = employee;
         this.companyName = companyName;
         this.position = position;

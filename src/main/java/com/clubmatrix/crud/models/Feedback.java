@@ -22,6 +22,9 @@ public class Feedback {
     private String providedBy;
     private String content;
 
+    public Feedback() {
+    }
+
     public Feedback(Employee employee, Date dateReceived, String providedBy, String content) {
         this.employee = employee;
         this.dateReceived = dateReceived;

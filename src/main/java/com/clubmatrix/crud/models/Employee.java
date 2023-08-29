@@ -20,6 +20,9 @@ public class Employee {
     private String position;
     private Double salary;
 
+    public Employee() {
+    }
+
     public Employee(Login login, String position, Double salary) {
         this.login = login;
         this.position = position;

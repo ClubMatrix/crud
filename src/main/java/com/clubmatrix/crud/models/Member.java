@@ -33,6 +33,9 @@ public class Member {
         ACTIVE, INACTIVE, SUSPENDED
     }
 
+    public Member() {
+    }
+
     public Member(Login login, PaymentDetails paymentDetails, Status status) {
         this.login = login;
         this.paymentDetails = paymentDetails;

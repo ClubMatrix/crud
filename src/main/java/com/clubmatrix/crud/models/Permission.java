@@ -14,6 +14,9 @@ public class Permission {
     private String name;
     private String description;
 
+    public Permission() {
+    }
+
     public Permission(String slug, String name, String description) {
         this.slug = slug;
         this.name = name;

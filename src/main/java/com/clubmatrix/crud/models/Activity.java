@@ -16,6 +16,9 @@ public class Activity {
     private String skillLevel;
     private String classSchedule;
 
+    public Activity() {
+    }
+
     public Activity(String name, String description, String ageRange, String skillLevel, String classSchedule) {
         this.name = name;
         this.description = description;
