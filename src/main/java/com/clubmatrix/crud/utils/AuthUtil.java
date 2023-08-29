@@ -2,7 +2,6 @@ package com.clubmatrix.crud.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.clubmatrix.crud.models.Permission;
