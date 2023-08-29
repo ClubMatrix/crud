@@ -14,7 +14,7 @@ CREATE TABLE login (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  password_hash VARCHAR(82) NOT NULL,
+  password VARCHAR(82) NOT NULL,
   phone VARCHAR(15),
   address_id INT REFERENCES address(id) ON DELETE SET NULL
 );
