@@ -18,7 +18,7 @@ public class Login {
   private Long id;
   private String name;
   private String email;
-  private String passwordHash;
+  private String password;
   private String phone;
 
   @OneToOne
@@ -33,10 +33,10 @@ public class Login {
   @JoinTable(name = "login_permission", joinColumns = @JoinColumn(name = "login_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
   private Set<Permission> permissions = new HashSet<>();
 
-  public Login(String name, String email, String passwordHash, String phone, Address address) {
+  public Login(String name, String email, String password, String phone, Address address) {
     this.name = name;
     this.email = email;
-    this.passwordHash = passwordHash;
+    this.password = password;
     this.phone = phone;
     this.address = address;
   }
@@ -61,12 +61,12 @@ public class Login {
     this.email = email;
   }
 
-  public String getPasswordHash() {
-    return passwordHash;
+  public String getPassword() {
+    return password;
   }
 
-  public void setPasswordHash(String passwordHash) {
-    this.passwordHash = passwordHash;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String getPhone() {
