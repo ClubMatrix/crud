@@ -27,7 +27,7 @@ public class LoginService {
   private AuthUtil authUtil;
 
   public LoginResponseDTO authenticate(LoginRequestDTO loginRequest) {
-    Login storedLogin = findByEmail(loginRequest.email);
+    Login storedLogin = loginRepository.findByEmail(loginRequest.email);
     if (storedLogin != null && passwordEncoder.matches(loginRequest.password, storedLogin.getPassword())) {
       String token = authUtil.generateToken(storedLogin);
       return new LoginResponseDTO(token);
@@ -36,7 +36,7 @@ public class LoginService {
   }
 
   public RegisterResponseDTO register(RegisterRequestDTO registerRequest) {
-    if (findByEmail(registerRequest.email) != null) {
+    if (loginRepository.findByEmail(registerRequest.email) != null) {
       throw new DuplicateRecordException("Email already registered.");
     }
     Login newLogin = new Login(registerRequest.name, registerRequest.email,
@@ -45,11 +45,7 @@ public class LoginService {
     return new RegisterResponseDTO(registeredLogin.getId(), registeredLogin.getName(), registeredLogin.getEmail());
   }
 
-  private Login findByEmail(String email) {
-    return loginRepository.findByEmail(email);
-  }
-
-  private Login saveLogin(Login login) {
+  public Login saveLogin(Login login) {
     return loginRepository.save(login);
   }
 }
