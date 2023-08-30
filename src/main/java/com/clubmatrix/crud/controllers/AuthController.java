@@ -22,22 +22,14 @@ public class AuthController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDTO loginRequest) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequest) {
         LoginResponseDTO response = loginService.authenticate(loginRequest);
-
-        if (response != null) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>("Invalid email or password.", HttpStatus.UNAUTHORIZED);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequestDTO registerRequest) {
+    public ResponseEntity<RegisterResponseDTO> register(@RequestBody RegisterRequestDTO registerRequest) {
         RegisterResponseDTO response = loginService.register(registerRequest);
-        if (response != null) {
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>("Email already registered or registration failed.", HttpStatus.BAD_REQUEST);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
