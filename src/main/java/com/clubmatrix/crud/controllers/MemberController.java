@@ -1,12 +1,18 @@
 package com.clubmatrix.crud.controllers;
 
-import com.clubmatrix.crud.models.Member;
+import com.clubmatrix.crud.dto.MemberRequestDTO;
+import com.clubmatrix.crud.dto.MemberResponseDTO;
 import com.clubmatrix.crud.services.MemberService;
 import com.clubmatrix.crud.utils.AuthUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/members")
@@ -19,20 +25,24 @@ public class MemberController {
   private AuthUtil authUtil;
 
   @PostMapping
-  public Member registerMember(@RequestBody Member member, @RequestHeader("Authorization") String token) {
-    if (authUtil.validateToken(token) && authUtil.hasPermission(token, "register_member")) {
-      return memberService.saveMember(member);
+  public ResponseEntity<?> registerMember(@RequestBody MemberRequestDTO memberDTO, HttpServletRequest request) {
+    String token = request.getHeader("Authorization").split(" ")[1];
+    if (!authUtil.hasPermission(token, "edit_members")) {
+      return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Permission denied.");
     }
 
-    return null;
+    MemberResponseDTO registeredMember = memberService.registerMember(memberDTO);
+    return ResponseEntity.status(HttpStatus.CREATED).body(registeredMember);
   }
 
   @GetMapping
-  public List<Member> getAllMembers(@RequestHeader("Authorization") String token) {
-    if (authUtil.validateToken(token) && authUtil.hasPermission(token, "view_members")) {
-      return memberService.getAllMembers();
+  public ResponseEntity<?> getAllMembers(HttpServletRequest request) {
+    String token = request.getHeader("Authorization").split(" ")[1];
+    if (!authUtil.hasPermission(token, "view_members")) {
+      return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Permission denied.");
     }
 
-    return null;
+    List<MemberResponseDTO> members = memberService.getAllMembers();
+    return ResponseEntity.ok(members);
   }
 }
