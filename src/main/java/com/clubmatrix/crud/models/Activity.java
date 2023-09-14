@@ -1,5 +1,7 @@
 package com.clubmatrix.crud.models;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,9 @@ public class Activity {
     private String ageRange;
     private String skillLevel;
     private String classSchedule;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date deletedAt;
 
     public Activity() {
     }
@@ -69,5 +74,29 @@ public class Activity {
 
     public void setClassSchedule(String classSchedule) {
         this.classSchedule = classSchedule;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt() {
+        this.updatedAt = new Date();
+    }
+
+    public Date getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt() {
+        this.deletedAt = new Date();
+    }
+
+    public void unsetDeletedAt() {
+        this.deletedAt = null;
     }
 }
