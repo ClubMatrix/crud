@@ -21,6 +21,9 @@ public class Feedback {
     private Date dateReceived;
     private String providedBy;
     private String content;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date deletedAt;
 
     public Feedback() {
     }
@@ -66,5 +69,29 @@ public class Feedback {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt() {
+        this.updatedAt = new Date();
+    }
+
+    public Date getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt() {
+        this.deletedAt = new Date();
+    }
+
+    public void unsetDeletedAt() {
+        this.deletedAt = null;
     }
 }

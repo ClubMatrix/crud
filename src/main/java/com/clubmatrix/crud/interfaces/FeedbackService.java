@@ -5,8 +5,8 @@ import com.clubmatrix.crud.interfaces.ServicesMethods.DeleteService;
 import com.clubmatrix.crud.interfaces.ServicesMethods.ListService;
 import com.clubmatrix.crud.interfaces.ServicesMethods.ReadService;
 import com.clubmatrix.crud.interfaces.ServicesMethods.UpdateService;
-import com.clubmatrix.crud.models.Activity;
+import com.clubmatrix.crud.models.Feedback;
 
-public interface ActivityService extends CreateService<Activity>, DeleteService<Long>, ListService<Activity>,
-        ReadService<Activity, Long>, UpdateService<Activity> {
+public interface FeedbackService extends CreateService<Feedback>, DeleteService<Long>, ListService<Feedback>,
+        ReadService<Feedback, Long>, UpdateService<Feedback> {
 }

@@ -1,4 +1,4 @@
-package com.clubmatrix.crud.interfaces;
+package com.clubmatrix.crud.interfaces.ServicesMethods;
 
 public interface DeleteService<Id> {
   void delete(Id id);

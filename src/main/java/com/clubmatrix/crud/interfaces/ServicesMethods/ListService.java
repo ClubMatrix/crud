@@ -1,4 +1,4 @@
-package com.clubmatrix.crud.interfaces;
+package com.clubmatrix.crud.interfaces.ServicesMethods;
 
 import java.util.ArrayList;
 import java.util.Map;
