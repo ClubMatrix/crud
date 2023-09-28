@@ -3,18 +3,12 @@ package com.clubmatrix.crud.models;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
 @Entity
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Role extends BaseModel {
     private String name;
     private String slug;
     private String description;
@@ -30,10 +24,6 @@ public class Role {
         this.name = name;
         this.slug = slug;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {

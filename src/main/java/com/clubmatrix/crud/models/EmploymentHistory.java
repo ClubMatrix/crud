@@ -1,19 +1,12 @@
 package com.clubmatrix.crud.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import java.util.Date;
 
 @Entity
-public class EmploymentHistory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class EmploymentHistory extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -35,10 +28,6 @@ public class EmploymentHistory {
         this.startDate = startDate;
         this.endDate = endDate;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Employee getEmployee() {

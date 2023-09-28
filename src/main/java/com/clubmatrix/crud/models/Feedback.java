@@ -1,19 +1,12 @@
 package com.clubmatrix.crud.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import java.util.Date;
 
 @Entity
-public class Feedback {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Feedback extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -21,9 +14,6 @@ public class Feedback {
     private Date dateReceived;
     private String providedBy;
     private String content;
-    private Date createdAt;
-    private Date updatedAt;
-    private Date deletedAt;
 
     public Feedback() {
     }
@@ -33,10 +23,6 @@ public class Feedback {
         this.dateReceived = dateReceived;
         this.providedBy = providedBy;
         this.content = content;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Employee getEmployee() {
@@ -69,29 +55,5 @@ public class Feedback {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt() {
-        this.updatedAt = new Date();
-    }
-
-    public Date getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt() {
-        this.deletedAt = new Date();
-    }
-
-    public void unsetDeletedAt() {
-        this.deletedAt = null;
     }
 }

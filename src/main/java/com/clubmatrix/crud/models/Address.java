@@ -1,15 +1,9 @@
 package com.clubmatrix.crud.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
 @Entity
-public class Address {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Address extends BaseModel {
   private String street;
   private String city;
   private String state;
@@ -25,10 +19,6 @@ public class Address {
     this.state = state;
     this.postalCode = postalCode;
     this.country = country;
-  }
-
-  public Long getId() {
-    return id;
   }
 
   public String getStreet() {

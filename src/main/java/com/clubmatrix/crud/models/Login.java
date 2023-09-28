@@ -3,19 +3,13 @@ package com.clubmatrix.crud.models;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Login {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Login extends BaseModel {
   private String name;
   private String email;
   private String password;
@@ -42,10 +36,6 @@ public class Login {
     this.password = password;
     this.phone = phone;
     this.address = address;
-  }
-
-  public Long getId() {
-    return id;
   }
 
   public String getName() {

@@ -1,18 +1,11 @@
 package com.clubmatrix.crud.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
 @Entity
-public class Dependent {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Dependent extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -27,10 +20,6 @@ public class Dependent {
         this.member = member;
         this.name = name;
         this.relationship = relationship;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Member getMember() {
